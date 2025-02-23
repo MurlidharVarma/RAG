@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: ragai
+
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+        chat:
+          additional-models:
+            - deepseek-r1
+            - llava
+          include: true
+      base-url: "http://localhost:11434/"
+      chat:
+        enabled: true
+        options:
+          model: "llava"
+      embedding:
+        model: "mxbai-embed-large"
+
+
+    vectorstore:
+      qdrant:
+        host: localhost
+        port: 6334
+        api-key: "mysupersecretqdrantkey"
+        collection-name: vector_store
+        use-tls: false
+        initialize-schema: true
+#        batching-strategy: FIXED_SIZE # Optional: Controls how documents are batched for embedding
+
